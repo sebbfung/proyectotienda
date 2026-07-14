@@ -57,4 +57,16 @@ public class ConsultaController {
         model.addAttribute("precioSup", precioSup);
         return "/consultas/listado";
     }
+
+    @PostMapping("/consultaExistencias")
+    public String consultaExistencias(@RequestParam() int cantidad,
+            Model model) {
+
+        var productos = productoService.productosConPocasExistencias(cantidad);
+
+        model.addAttribute("productos", productos);
+        model.addAttribute("cantidad", cantidad);
+
+        return "/consultas/listado";
+    }
 }
