@@ -52,7 +52,7 @@ public class CategoriaController {
         try {
             categoriaService.delete(idCategoria);
         } catch (IllegalArgumentException e) {
-            titulo = "error"; //Captura la excepción de argumento inválido para el mensaje de "no existe"
+            titulo = "error"; // Captura la excepción de argumento inválido para el mensaje de "no existe"
             detalle = "categoria.error01";
         } catch (IllegalStateException e) {
             titulo = "error"; // Captura la excepción de estado ilegal para el mensaje de "datos asociados"

@@ -1,10 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<head th:replace="~{categoria/fragmentos :: head}"/>
+<body>
+
 <!-- fragmento 1 para Agregar categoria en ventana modal -->
 <section th:fragment="agregar">
     <!-- Button trigger modal -->
     <div class='row py-4 mb-2 bg-light'>
         <div class='col-md-1'></div>
         <div class='col-md-3'>
-            <button type="button" class="btn btn-primary" sec:authorize="hasRole('ROLE_ADMIN')"
+            <button type="button" class="btn btn-primary"  sec:authorize="hasRole('ROLE_ADMIN')"
                     data-bs-toggle="modal" data-bs-target="#agregarCategoriaModal">
                 <i class="fa-solid fa-plus"></i> [[#{categoria.agregar}]]</button>
         </div>
@@ -68,7 +75,8 @@
                                     <td>[[${c.descripcion}]]</td>
                                     <td><img th:src="@{${c.rutaImagen}}" alt="noData" height="75"/></td>
                                     <td th:text="${c.activo} ? 'Activa':'Inactiva'"></td>
-                                    <td sec: authorize="hasRole('ROLE_ADMIN')>
+                                    
+                                    <td sec:authorize="hasRole('ROLE_ADMIN')">
                                         <button type="button" class="btn btn-danger"
                                                 data-bs-toggle="modal" data-bs-target="#confirmModal"
                                                 th:data-bs-id="${c.idCategoria}"
